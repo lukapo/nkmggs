@@ -1,0 +1,29 @@
+﻿.heading {
+  margin-bottom: var(--space-10);
+}
+
+.center {
+  text-align: center;
+  margin-inline: auto;
+  max-width: 42rem;
+}
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-red);
+  margin-bottom: var(--space-3);
+}
+
+.description {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--font-body);
+}

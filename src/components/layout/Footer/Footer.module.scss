@@ -1,0 +1,77 @@
+﻿@use '../../../styles/mixins' as *;
+
+.footer {
+  margin-top: auto;
+  background: var(--color-dark);
+  color: var(--color-text-inverse);
+  padding-block: var(--space-16) var(--space-8);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-10);
+  @include respond-to('md') { grid-template-columns: 2fr 1fr 1fr; }
+}
+
+.logo {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  margin-bottom: var(--space-4);
+}
+
+.clubName {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  max-width: 28rem;
+}
+
+.navTitle {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+  color: var(--color-white);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.navLink {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--transition-base);
+  @include focus-ring;
+
+  &:hover { color: var(--color-brand-yellow); }
+}
+
+.contactLink {
+  color: var(--color-brand-yellow);
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover { text-decoration: underline; }
+}
+
+.location {
+  margin-top: var(--space-2);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.copyright {
+  margin-top: var(--space-10);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.55);
+}

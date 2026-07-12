@@ -1,0 +1,21 @@
+﻿.page {
+  padding-block: var(--space-16);
+}
+
+.header {
+  max-width: 42rem;
+  margin-bottom: var(--space-10);
+}
+
+.intro {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}

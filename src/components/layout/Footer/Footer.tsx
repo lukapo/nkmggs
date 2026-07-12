@@ -1,0 +1,50 @@
+﻿import { NavLink } from 'react-router-dom'
+import { navigationItems } from '../../../data/navigation'
+import { site } from '../../../data/site'
+import { Container } from '../../ui/Container/Container'
+import styles from './Footer.module.scss'
+
+export function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className={styles.footer}>
+      <Container>
+        <div className={styles.grid}>
+          <div className={styles.brandBlock}>
+            <img src={site.logoPath} alt="" className={styles.logo} width={56} height={56} />
+            <p className={styles.clubName}>{site.fullName}</p>
+            <p className={styles.description}>{site.description}</p>
+          </div>
+
+          <nav className={styles.navBlock} aria-label="Podnožje">
+            <h2 className={styles.navTitle}>Navigacija</h2>
+            <ul className={styles.navList}>
+              {navigationItems.map((item) => (
+                <li key={item.path}>
+                  <NavLink to={item.path} end={item.end} className={styles.navLink}>
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className={styles.contactBlock}>
+            <h2 className={styles.navTitle}>Kontakt</h2>
+            <p>
+              <a href={`mailto:${site.email}`} className={styles.contactLink}>
+                {site.email}
+              </a>
+            </p>
+            <p className={styles.location}>{site.location}</p>
+          </div>
+        </div>
+
+        <p className={styles.copyright}>
+          © {currentYear} {site.name}. Sva prava pridržana.
+        </p>
+      </Container>
+    </footer>
+  )
+}
