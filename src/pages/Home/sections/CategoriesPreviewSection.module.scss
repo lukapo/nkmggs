@@ -1,0 +1,29 @@
+﻿@use '../../../styles/mixins' as *;
+
+.section {
+  padding-block: var(--space-16);
+  background: var(--color-white);
+
+  @include respond-to('md') {
+    padding-block: var(--space-20);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-10);
+}

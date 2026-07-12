@@ -8,4 +8,7 @@ export interface Category {
   ageHint?: string
   status: CategoryStatus
   sortOrder: number
+  visual: {
+    gradient: string
+  }
 }

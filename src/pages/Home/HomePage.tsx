@@ -1,11 +1,17 @@
-﻿import { PlaceholderPage } from '../../components/ui/PlaceholderPage/PlaceholderPage'
-import { site } from '../../data/site'
+﻿import { HeroSection } from './sections/HeroSection'
+import { ClubIntroSection } from './sections/ClubIntroSection'
+import { CategoriesPreviewSection } from './sections/CategoriesPreviewSection'
+import { DonationCtaSection } from './sections/DonationCtaSection'
+import { FinalCtaSection } from './sections/FinalCtaSection'
 
 export function HomePage() {
   return (
-    <PlaceholderPage
-      title={site.name}
-      intro={`${site.tagline} Službena web stranica kluba trenutno je u izradi — sadržaj početne stranice dolazi u sljedećoj fazi.`}
-    />
+    <>
+      <HeroSection />
+      <ClubIntroSection />
+      <CategoriesPreviewSection />
+      <DonationCtaSection />
+      <FinalCtaSection />
+    </>
   )
 }

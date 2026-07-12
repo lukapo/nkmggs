@@ -5,7 +5,9 @@
   tagline: 'Nogomet, zajednica i ponos Gornje Stubice',
   email: 'nkmatijagubec1970@gmail.com',
   foundedYear: 1970,
-  logoPath: '/images/logo-nk-matija-gubec.png',
+  logoPath: `${import.meta.env.BASE_URL}images/logo-nk-matija-gubec.png`,
+  heroImagePath: `${import.meta.env.BASE_URL}images/hero-placeholder.jpg`,
+  heroTitleLines: ['Nogomet.', 'Zajedništvo.', 'Gornja Stubica.'] as const,
   description:
     'Nogometni klub iz Gornje Stubice koji od 1970. godine okuplja mlade i odrasle igrače, njeguje lokalnu zajednicu i gradi budućnost kroz rad s djecom i mladežima.',
   aboutIntro:

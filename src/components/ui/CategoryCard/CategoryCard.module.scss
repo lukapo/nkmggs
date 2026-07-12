@@ -1,10 +1,12 @@
 ﻿.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  border-top: 3px solid var(--color-brand-red);
+  overflow: hidden;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
 
   @media (prefers-reduced-motion: reduce) {
@@ -22,8 +24,19 @@
 }
 
 .comingSoon {
-  opacity: 0.85;
-  border-top-color: var(--color-text-muted);
+  opacity: 0.88;
+}
+
+.visual {
+  height: 5rem;
+  flex-shrink: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-5);
 }
 
 .header {
@@ -56,6 +69,6 @@
 
 .description {
   color: var(--color-text-muted);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   line-height: 1.6;
 }

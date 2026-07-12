@@ -1,0 +1,64 @@
+﻿@use '../../../styles/mixins' as *;
+
+.section {
+  padding-block: var(--space-16);
+  background: var(--color-bg);
+
+  @include respond-to('md') {
+    padding-block: var(--space-20);
+  }
+}
+
+.panel {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-10);
+  background: var(--color-brand-red);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-lg);
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr auto;
+    padding: var(--space-12) var(--space-16);
+    gap: var(--space-12);
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-yellow);
+  margin-bottom: var(--space-3);
+}
+
+.copy h2 {
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+  max-width: 32rem;
+}
+
+.text {
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 38rem;
+}
+
+.note {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.action {
+  display: flex;
+  justify-content: flex-start;
+
+  @include respond-to('lg') {
+    justify-content: center;
+  }
+}
