@@ -1,0 +1,23 @@
+@use '../../../styles/mixins' as *;
+
+.section {
+  padding-block: var(--space-16);
+  background: var(--color-bg);
+
+  @include respond-to('md') {
+    padding-block: var(--space-20);
+  }
+}
+
+.content {
+  max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.paragraph {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.75;
+}

@@ -1,0 +1,108 @@
+@use '../styles/motion' as *;
+
+.card {
+  @include section-enter(120ms);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-8);
+  border-left: 4px solid var(--color-brand-red);
+}
+
+.previewNote {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-brand-red);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.statement {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+}
+
+.important {
+  margin-bottom: var(--space-6);
+  padding: var(--space-5);
+  background: rgba(248, 213, 28, 0.15);
+  border: 1px solid rgba(248, 213, 28, 0.45);
+  border-radius: var(--radius-md);
+}
+
+.importantTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-dark);
+  margin-bottom: var(--space-2);
+}
+
+.importantText {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+  margin-bottom: var(--space-6);
+  transition: opacity var(--transition-base);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  input {
+    width: 1.25rem;
+    height: 1.25rem;
+    min-width: 1.25rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+    accent-color: var(--color-brand-red);
+  }
+
+  span {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 20rem) {
+  .card {
+    padding: var(--space-6);
+  }
+
+  .important {
+    padding: var(--space-4);
+  }
+}

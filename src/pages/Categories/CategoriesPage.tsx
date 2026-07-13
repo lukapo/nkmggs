@@ -1,8 +1,13 @@
-import { site } from '../../data/site'
-import { PlaceholderPage } from '../../components/ui/PlaceholderPage/PlaceholderPage'
-
-const { categories } = site.pages
+import { CategoriesHeaderSection } from './sections/CategoriesHeaderSection'
+import { CategoriesGridSection } from './sections/CategoriesGridSection'
+import { CategoriesCtaSection } from './sections/CategoriesCtaSection'
 
 export function CategoriesPage() {
-  return <PlaceholderPage title={categories.title} intro={categories.intro} />
+  return (
+    <>
+      <CategoriesHeaderSection />
+      <CategoriesGridSection />
+      <CategoriesCtaSection />
+    </>
+  )
 }

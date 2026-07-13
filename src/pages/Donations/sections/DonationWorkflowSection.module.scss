@@ -1,0 +1,33 @@
+@use '../../../styles/mixins' as *;
+@use '../styles/motion' as *;
+
+.section {
+  @include section-enter;
+  padding-block: var(--space-12) var(--space-20);
+  background: var(--color-bg);
+  overflow-x: hidden;
+
+  @include respond-to('md') {
+    padding-block: var(--space-16) var(--space-24);
+  }
+}
+
+.workflow {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-10);
+    align-items: start;
+  }
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+}

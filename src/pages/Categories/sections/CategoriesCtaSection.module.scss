@@ -1,0 +1,39 @@
+@use '../../../styles/mixins' as *;
+
+.section {
+  padding-block: var(--space-16) var(--space-20);
+  background: var(--color-white);
+}
+
+.panel {
+  text-align: center;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.panel h2 {
+  margin-bottom: var(--space-4);
+}
+
+.text {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  margin-bottom: var(--space-8);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.secondaryAction {
+  border-color: var(--color-dark);
+  color: var(--color-dark);
+
+  &:hover {
+    background: rgba(37, 34, 28, 0.06);
+  }
+}

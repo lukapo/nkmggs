@@ -6,9 +6,12 @@ export interface Category {
   slug: string
   description: string
   ageHint?: string
+  ageLabel?: string
+  coachName?: string
   status: CategoryStatus
   sortOrder: number
   visual: {
     gradient: string
   }
+  imagePath?: string
 }

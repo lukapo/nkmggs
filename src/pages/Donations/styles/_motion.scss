@@ -1,0 +1,19 @@
+@keyframes donationSectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin section-enter($delay: 0ms) {
+  animation: donationSectionEnter var(--transition-slow) ease-out $delay both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

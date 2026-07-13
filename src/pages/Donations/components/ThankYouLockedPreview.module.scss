@@ -1,0 +1,73 @@
+@use '../styles/motion' as *;
+
+.card {
+  @include section-enter(80ms);
+  background: linear-gradient(180deg, var(--color-bg) 0%, rgba(247, 247, 244, 0.6) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+}
+
+.silhouette {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+}
+
+.jersey {
+  position: relative;
+  width: 5.5rem;
+  height: 7rem;
+  background: linear-gradient(
+    180deg,
+    rgba(215, 45, 25, 0.12) 0%,
+    rgba(215, 45, 25, 0.06) 100%
+  );
+  border: 1px solid rgba(215, 45, 25, 0.15);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm);
+  opacity: 0.85;
+}
+
+.collar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42%;
+  height: 10%;
+  background: rgba(37, 34, 28, 0.08);
+  border-radius: 0 0 50% 50%;
+}
+
+.nameArea {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 8%;
+  background: rgba(37, 34, 28, 0.07);
+  border-radius: 2px;
+}
+
+.numberArea {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38%;
+  height: 22%;
+  background: rgba(37, 34, 28, 0.05);
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(37, 34, 28, 0.1);
+}
+
+.message {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 16rem;
+  margin-inline: auto;
+}

@@ -1,0 +1,102 @@
+@use '../../../styles/mixins' as *;
+@use '../styles/motion' as *;
+
+.card {
+  @include section-enter(40ms);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+}
+
+.title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-6);
+  color: var(--color-text);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.row {
+  display: grid;
+  gap: var(--space-5);
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+}
+
+.input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--color-text);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+  @include focus-ring;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand-red);
+    box-shadow: var(--focus-ring);
+  }
+
+  &:hover {
+    border-color: rgba(215, 45, 25, 0.35);
+  }
+}
+
+.jerseyRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+
+  .input {
+    flex: 1 1 6rem;
+    max-width: 8rem;
+  }
+}
+
+.randomBtn {
+  flex-shrink: 0;
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.submit {
+  width: 100%;
+  margin-top: var(--space-2);
+
+  @include respond-to('md') {
+    width: auto;
+    align-self: flex-start;
+  }
+}

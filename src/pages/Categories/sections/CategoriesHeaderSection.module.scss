@@ -1,0 +1,87 @@
+@use '../../../styles/mixins' as *;
+
+.section {
+  padding-block: var(--space-12) var(--space-10);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+
+  @include respond-to('md') {
+    padding-block: var(--space-16) var(--space-12);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-10);
+  align-items: center;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr minmax(16rem, 22rem);
+    gap: var(--space-16);
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-red);
+  margin-bottom: var(--space-3);
+}
+
+.copy h1 {
+  margin-bottom: var(--space-4);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+}
+
+.intro {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  max-width: 36rem;
+}
+
+.visual {
+  position: relative;
+  min-height: 14rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  background: var(--color-dark);
+
+  @include respond-to('md') {
+    min-height: 16rem;
+  }
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(145deg, rgba(215, 45, 25, 0.3) 0%, transparent 50%),
+    linear-gradient(220deg, rgba(248, 213, 28, 0.12) 0%, transparent 40%),
+    linear-gradient(180deg, #2a2620 0%, #25221c 45%, #1a1814 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.photoWithImage {
+  background-image:
+    linear-gradient(180deg, rgba(37, 34, 28, 0.4) 0%, rgba(37, 34, 28, 0.65) 100%),
+    var(--categories-photo);
+}
+
+.caption {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  z-index: 1;
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
