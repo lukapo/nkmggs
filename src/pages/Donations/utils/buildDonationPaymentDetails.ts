@@ -45,7 +45,7 @@ export function buildDonationPaymentDetails(donation: SubmittedDonation): Donati
 
   return {
     donorName: hub3PayerName,
-    recipient: truncateHub3Text(details.recipient, HUB3_FIELD_LIMITS.recipientName),
+    recipient: details.recipient,
     iban: details.iban,
     bic: details.bic,
     bank: details.bank,
