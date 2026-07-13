@@ -1,4 +1,4 @@
-﻿import { useEffect, useId, useState } from 'react'
+﻿import { useCallback, useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { navigationItems } from '../../../data/navigation'
 import { site } from '../../../data/site'
@@ -9,7 +9,16 @@ import styles from './Header.module.scss'
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const menuButtonId = useId()
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false)
+    requestAnimationFrame(() => menuButtonRef.current?.focus())
+  }, [])
+
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen((open) => !open)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 8)
@@ -53,13 +62,14 @@ export function Header() {
               Doniraj
             </Button>
             <button
-              id={menuButtonId}
+              ref={menuButtonRef}
               type="button"
               className={styles.menuButton}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
+              aria-haspopup="dialog"
               aria-label={isMenuOpen ? 'Zatvori izbornik' : 'Otvori izbornik'}
-              onClick={() => setIsMenuOpen((open) => !open)}
+              onClick={toggleMenu}
             >
               <span className={styles.menuIcon} aria-hidden="true" />
             </button>
@@ -67,7 +77,7 @@ export function Header() {
         </div>
       </header>
 
-      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} menuButtonRef={menuButtonRef} />
     </>
   )
 }

@@ -4,20 +4,47 @@
   margin-top: auto;
   background: var(--color-dark);
   color: var(--color-text-inverse);
-  padding-block: var(--space-16) var(--space-8);
+  padding-block: var(--space-20) var(--space-12);
+
+  @include respond-to('md') {
+    padding-block: var(--space-16) var(--space-8);
+  }
 }
 
 .grid {
   display: grid;
-  gap: var(--space-10);
-  @include respond-to('md') { grid-template-columns: 2fr 1fr 1fr; }
+  gap: var(--space-12);
+  text-align: center;
+  justify-items: center;
+
+  @include respond-to('md') {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-10);
+    text-align: left;
+    justify-items: stretch;
+  }
+}
+
+.brandBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include respond-to('md') {
+    align-items: flex-start;
+  }
 }
 
 .logo {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   object-fit: contain;
   margin-bottom: var(--space-4);
+
+  @include respond-to('md') {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 
 .clubName {
@@ -32,6 +59,23 @@
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.7;
   max-width: 28rem;
+  margin-inline: auto;
+
+  @include respond-to('md') {
+    margin-inline: 0;
+  }
+}
+
+.navBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @include respond-to('md') {
+    align-items: flex-start;
+    width: auto;
+  }
 }
 
 .navTitle {
@@ -43,7 +87,12 @@
 .navList {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
+
+  @include respond-to('md') {
+    align-items: flex-start;
+  }
 }
 
 .navLink {
@@ -53,6 +102,18 @@
   @include focus-ring;
 
   &:hover { color: var(--color-brand-yellow); }
+}
+
+.contactBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @include respond-to('md') {
+    align-items: flex-start;
+    width: auto;
+  }
 }
 
 .contactLink {
@@ -69,9 +130,16 @@
 }
 
 .copyright {
-  margin-top: var(--space-10);
-  padding-top: var(--space-6);
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+
+  @include respond-to('md') {
+    margin-top: var(--space-10);
+    padding-top: var(--space-6);
+    text-align: left;
+  }
 }

@@ -9,10 +9,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
   const isComingSoon = category.status === 'coming-soon'
 
   return (
-    <article
-      className={`${styles.card} ${isComingSoon ? styles.comingSoon : ''}`}
-      aria-label={category.name}
-    >
+    <article className={`${styles.card} ${isComingSoon ? styles.comingSoon : ''}`}>
       <div
         className={styles.visual}
         style={{ background: category.visual.gradient }}

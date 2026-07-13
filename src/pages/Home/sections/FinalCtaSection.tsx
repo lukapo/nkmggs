@@ -1,3 +1,4 @@
+import { site } from '../../../data/site'
 import { Button } from '../../../components/ui/Button/Button'
 import { Container } from '../../../components/ui/Container/Container'
 import styles from './FinalCtaSection.module.scss'
@@ -8,10 +9,7 @@ export function FinalCtaSection() {
       <Container>
         <div className={styles.panel}>
           <h2 id="final-cta-title">Postani dio naše priče</h2>
-          <p className={styles.text}>
-            Bilo da tražiš informacije o treninzima, želiš upoznati kategorije ili se javiti klubu
-            — tu smo za tebe.
-          </p>
+          <p className={styles.text}>{site.contactTeaser}</p>
           <div className={styles.actions}>
             <Button asChild variant="secondary" size="lg" to="/kontakt">
               Kontaktiraj nas

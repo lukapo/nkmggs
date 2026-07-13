@@ -42,3 +42,13 @@
   color: var(--color-brand-red);
   background: rgba(215, 45, 25, 0.08);
 }
+
+.donate {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.donateBtn {
+  width: 100%;
+}
