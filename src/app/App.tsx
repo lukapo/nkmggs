@@ -10,7 +10,7 @@ import { AppLayout } from './AppLayout'
 
 export default function App() {
   return (
-    <BrowserRouter basename="/nkmggs">
+    <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<HomePage />} />

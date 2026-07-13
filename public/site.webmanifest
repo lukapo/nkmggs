@@ -2,14 +2,14 @@
   "name": "NK Matija Gubec Gornja Stubica",
   "short_name": "NK Matija Gubec",
   "description": "Službena web-stranica NK Matija Gubec Gornja Stubica.",
-  "start_url": "/nkmggs/",
-  "scope": "/nkmggs/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#F7F7F4",
   "theme_color": "#D72D19",
   "icons": [
     {
-      "src": "/nkmggs/images/logo-nk-matija-gubec.png",
+      "src": "/images/logo-nk-matija-gubec.png",
       "sizes": "500x500",
       "type": "image/png",
       "purpose": "any"
