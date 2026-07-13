@@ -12,9 +12,9 @@ export function Footer() {
       <Container>
         <div className={styles.grid}>
           <div className={styles.brandBlock}>
-            <img src={site.logoPath} alt="" className={styles.logo} width={56} height={56} />
-            <p className={styles.clubName}>{site.fullName}</p>
-            <p className={styles.description}>{site.description}</p>
+            <img src={site.assets.logoPath} alt="" className={styles.logo} width={56} height={56} />
+            <p className={styles.clubName}>{site.club.fullName}</p>
+            <p className={styles.description}>{site.club.description}</p>
           </div>
 
           <nav className={styles.navBlock} aria-label="Podnožje">
@@ -33,16 +33,16 @@ export function Footer() {
           <div className={styles.contactBlock}>
             <h2 className={styles.navTitle}>Kontakt</h2>
             <p>
-              <a href={`mailto:${site.email}`} className={styles.contactLink}>
-                {site.email}
+              <a href={`mailto:${site.contact.email}`} className={styles.contactLink}>
+                {site.contact.email}
               </a>
             </p>
-            <p className={styles.location}>{site.location}</p>
+            <p className={styles.location}>{site.club.location}</p>
           </div>
         </div>
 
         <p className={styles.copyright}>
-          © {currentYear} {site.name}. Sva prava pridržana.
+          © {currentYear} {site.club.name}. Sva prava pridržana.
         </p>
       </Container>
     </footer>

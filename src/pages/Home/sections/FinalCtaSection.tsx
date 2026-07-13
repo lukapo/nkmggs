@@ -3,19 +3,21 @@ import { Button } from '../../../components/ui/Button/Button'
 import { Container } from '../../../components/ui/Container/Container'
 import styles from './FinalCtaSection.module.scss'
 
+const { finalCta } = site.home
+
 export function FinalCtaSection() {
   return (
     <section className={styles.section} aria-labelledby="final-cta-title">
       <Container>
         <div className={styles.panel}>
-          <h2 id="final-cta-title">Postani dio naše priče</h2>
-          <p className={styles.text}>{site.contactTeaser}</p>
+          <h2 id="final-cta-title">{finalCta.title}</h2>
+          <p className={styles.text}>{finalCta.description}</p>
           <div className={styles.actions}>
-            <Button asChild variant="secondary" size="lg" to="/kontakt">
-              Kontaktiraj nas
+            <Button asChild variant="secondary" size="lg" to={finalCta.primaryCta.path}>
+              {finalCta.primaryCta.label}
             </Button>
-            <Button asChild variant="ghost" size="lg" to="/kategorije" className={styles.secondaryAction}>
-              Pregledaj kategorije
+            <Button asChild variant="ghost" size="lg" to={finalCta.secondaryCta.path} className={styles.secondaryAction}>
+              {finalCta.secondaryCta.label}
             </Button>
           </div>
         </div>

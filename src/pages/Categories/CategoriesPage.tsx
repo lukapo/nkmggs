@@ -1,10 +1,8 @@
+import { site } from '../../data/site'
 import { PlaceholderPage } from '../../components/ui/PlaceholderPage/PlaceholderPage'
 
+const { categories } = site.pages
+
 export function CategoriesPage() {
-  return (
-    <PlaceholderPage
-      title="Kategorije"
-      intro="Pregled klupskih kategorija bit će dostupan u sljedećoj fazi projekta."
-    />
-  )
+  return <PlaceholderPage title={categories.title} intro={categories.intro} />
 }

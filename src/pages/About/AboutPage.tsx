@@ -2,25 +2,21 @@
 import { PlaceholderPage } from '../../components/ui/PlaceholderPage/PlaceholderPage'
 import styles from './AboutPage.module.scss'
 
+const { about } = site.pages
+
 export function AboutPage() {
+  const storyText = about.storyText.replace('{foundedYear}', String(site.club.foundedYear))
+
   return (
-    <PlaceholderPage title="O nama" intro={site.aboutIntro}>
+    <PlaceholderPage title={about.title} intro={site.club.aboutIntro}>
       <article className={styles.card}>
-        <h2>Naša priča</h2>
-        <p>
-          NK Matija Gubec djeluje od {site.foundedYear}. godine u Gornjoj Stubici. Kroz desetljeća
-          rada klub je postao mjesto okupljanja mladih igrača, roditelja i volontera koji zajedno
-          grade nogometnu budućnost lokalne zajednice.
-        </p>
+        <h2>{about.storyHeading}</h2>
+        <p>{storyText}</p>
       </article>
       <article className={styles.card}>
-        <h2>Misija i vizija</h2>
-        <p>
-          Naša misija je razvijati nogometnu kulturu, fair play i odgovornost kroz rad s djecom i
-          mladima. Vizija kluba je sustavno ulaganje u mlade igrače i jačanje zajednice u Gornjoj
-          Stubici.
-        </p>
-        <p className={styles.note}>Sadržaj ove stranice bit će dopunjen u sljedećoj fazi projekta.</p>
+        <h2>{about.missionHeading}</h2>
+        <p>{about.missionText}</p>
+        <p className={styles.note}>{about.note}</p>
       </article>
     </PlaceholderPage>
   )

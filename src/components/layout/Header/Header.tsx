@@ -31,11 +31,11 @@ export function Header() {
     <>
       <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <NavLink to="/" className={styles.brand} aria-label={`${site.name} — početna`}>
-            <img src={site.logoPath} alt="" className={styles.logo} width={48} height={48} />
+          <NavLink to="/" className={styles.brand} aria-label={`${site.club.name} — početna`}>
+            <img src={site.assets.logoPath} alt="" className={styles.logo} width={48} height={48} />
             <span className={styles.brandText}>
-              <span className={styles.clubName}>{site.name}</span>
-              <span className={styles.location}>{site.location}</span>
+              <span className={styles.clubName}>{site.club.name}</span>
+              <span className={styles.location}>{site.club.location}</span>
             </span>
           </NavLink>
 
