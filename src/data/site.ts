@@ -34,6 +34,13 @@ export const site = {
       role: 'Predsjednik kluba',
       name: 'Dalibor Sviben',
     },
+    address: {
+      display: 'Ul. Matije Gupca 4A, 49240 Gornja Stubica',
+      mapsSearchUrl:
+        'https://www.google.com/maps/search/?api=1&query=NK+Matija+Gubec%2C+Ul.+Matije+Gupca+4A%2C+49240+Gornja+Stubica',
+      mapsEmbedUrl:
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980.2464370020679!2d16.01527793138175!3d45.98013467588732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765dd0042c68893%3A0x14305188b2e90169!2sNK%20Matija%20Gubec!5e0!3m2!1shr!2shr!4v1783948079129!5m2!1shr!2shr',
+    },
   },
 
   social: {
@@ -245,6 +252,8 @@ export const site = {
         'Za informacije o klubu, treninzima, članstvu, suradnji ili drugim upitima obratite nam se putem službenog e-maila ili telefona.',
       emailLabel: 'Službeni e-mail',
       phoneLabel: 'Telefon',
+      addressLabel: 'Adresa',
+      mapTitle: 'Lokacija NK Matija Gubec Gornja Stubica',
     },
 
     donations: {

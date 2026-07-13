@@ -50,7 +50,17 @@ export function Footer() {
                 {site.contact.phone.display}
               </a>
             </p>
-            <p className={styles.location}>{site.club.location}</p>
+            <address className={styles.address}>
+              <a
+                href={site.contact.address.mapsSearchUrl}
+                className={styles.contactLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Adresa kluba: ${site.contact.address.display}`}
+              >
+                {site.contact.address.display}
+              </a>
+            </address>
           </div>
         </div>
 

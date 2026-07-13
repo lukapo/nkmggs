@@ -20,6 +20,20 @@ export function ContactDetailsSection() {
 
             <dl className={styles.details}>
               <div className={styles.detailRow}>
+                <dt className={styles.label}>{contactPage.addressLabel}</dt>
+                <dd className={styles.value}>
+                  <a
+                    href={contactData.address.mapsSearchUrl}
+                    className={styles.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${contactPage.addressLabel}: ${contactData.address.display}`}
+                  >
+                    {contactData.address.display}
+                  </a>
+                </dd>
+              </div>
+              <div className={styles.detailRow}>
                 <dt className={styles.label}>{contactPage.emailLabel}</dt>
                 <dd className={styles.value}>
                   <a
