@@ -69,6 +69,22 @@
   }
 }
 
+.inputError {
+  border-color: var(--color-brand-red);
+
+  &:focus {
+    border-color: var(--color-brand-red);
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.error {
+  font-size: var(--text-sm);
+  color: var(--color-brand-red);
+  line-height: 1.5;
+  margin: 0;
+}
+
 .jerseyRow {
   display: flex;
   flex-wrap: wrap;

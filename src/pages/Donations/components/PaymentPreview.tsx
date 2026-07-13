@@ -1,10 +1,24 @@
 import { site } from '../../../data/site'
+import type { SubmittedDonation } from '../utils/validateDonationForm'
 import styles from './PaymentPreview.module.scss'
 
 const { payment } = site.pages.donations
 
-export function PaymentPreview() {
+interface PaymentPreviewProps {
+  donation: SubmittedDonation
+}
+
+function formatAmount(amount: number): string {
+  return `${new Intl.NumberFormat('hr-HR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount)} EUR`
+}
+
+export function PaymentPreview({ donation }: PaymentPreviewProps) {
   const { details } = payment
+  const donorName = `${donation.firstName} ${donation.lastName}`
+  const paymentDescription = `Donacija - ${donorName}`
 
   return (
     <section className={styles.card} aria-labelledby="payment-preview-title">
@@ -18,6 +32,10 @@ export function PaymentPreview() {
       </div>
 
       <dl className={styles.details}>
+        <div className={styles.detailRow}>
+          <dt>Donator</dt>
+          <dd>{donorName}</dd>
+        </div>
         <div className={styles.detailRow}>
           <dt>Primatelj</dt>
           <dd>{details.recipient}</dd>
@@ -40,7 +58,7 @@ export function PaymentPreview() {
         </div>
         <div className={styles.detailRow}>
           <dt>Opis plaćanja</dt>
-          <dd>{details.description}</dd>
+          <dd>{paymentDescription}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Model</dt>
@@ -52,7 +70,7 @@ export function PaymentPreview() {
         </div>
         <div className={`${styles.detailRow} ${styles.amountRow}`}>
           <dt>Iznos</dt>
-          <dd>{details.amount}</dd>
+          <dd>{formatAmount(donation.amount)}</dd>
         </div>
       </dl>
 

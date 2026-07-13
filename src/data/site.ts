@@ -201,6 +201,15 @@ export const site = {
           'Ako ne odaberete broj, aplikacija će automatski odabrati nasumičan broj od 0 do 99.',
         randomButtonLabel: 'Nasumičan broj',
         submitLabel: 'Generiraj kod za plaćanje',
+        errors: {
+          firstNameRequired: 'Ime je obavezno.',
+          firstNameMinLength: 'Ime mora imati najmanje 2 znaka.',
+          lastNameRequired: 'Prezime je obavezno.',
+          lastNameMinLength: 'Prezime mora imati najmanje 2 znaka.',
+          jerseyNumberInvalid: 'Broj na dresu mora biti cijeli broj od 0 do 99.',
+          amountRequired: 'Iznos donacije je obavezan.',
+          amountInvalid: 'Iznos mora biti broj veći od 0.',
+        },
       },
 
       payment: {
