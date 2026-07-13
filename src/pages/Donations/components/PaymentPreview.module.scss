@@ -23,54 +23,6 @@
   }
 }
 
-.qrPlaceholder {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  max-width: 16rem;
-  margin: 0 auto var(--space-8);
-  background: var(--color-bg);
-  border: 2px dashed var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-}
-
-.qrPattern {
-  position: absolute;
-  inset: var(--space-4);
-  background:
-    repeating-linear-gradient(
-      0deg,
-      var(--color-dark) 0,
-      var(--color-dark) 2px,
-      transparent 2px,
-      transparent 6px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--color-dark) 0,
-      var(--color-dark) 2px,
-      transparent 2px,
-      transparent 6px
-    );
-  opacity: 0.08;
-}
-
-.qrLabel {
-  position: relative;
-  z-index: 1;
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-  text-align: center;
-  padding: var(--space-4);
-}
-
 .details {
   display: flex;
   flex-direction: column;

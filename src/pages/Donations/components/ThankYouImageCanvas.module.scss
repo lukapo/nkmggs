@@ -1,0 +1,50 @@
+.wrapper {
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.hiddenCanvas {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.preview {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  image-rendering: auto;
+}
+
+.loading {
+  margin: 0;
+  padding: var(--space-8) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.errorBox {
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+  padding: var(--space-5);
+  background: rgba(215, 45, 25, 0.06);
+  border: 1px solid rgba(215, 45, 25, 0.2);
+  border-radius: var(--radius-md);
+}
+
+.errorText {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-brand-red);
+  line-height: 1.6;
+  text-align: center;
+}

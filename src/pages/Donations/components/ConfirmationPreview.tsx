@@ -15,6 +15,8 @@ interface ConfirmationPreviewProps {
   values: DonationConfirmationValues
   errors: DonationConfirmationErrors
   showErrors: boolean
+  isSendingEmail: boolean
+  emailSendError: string | null
   className?: string
   onPaymentDeclaredChange: (checked: boolean) => void
   onPublicationConsentChange: (checked: boolean) => void
@@ -26,6 +28,8 @@ export function ConfirmationPreview({
   values,
   errors,
   showErrors,
+  isSendingEmail,
+  emailSendError,
   className,
   onPaymentDeclaredChange,
   onPublicationConsentChange,
@@ -33,6 +37,7 @@ export function ConfirmationPreview({
   onConfirm,
 }: ConfirmationPreviewProps) {
   const paymentDeclaredInvalid = showErrors && Boolean(errors.paymentDeclared)
+  const isConfirmDisabled = !values.paymentDeclared || isSendingEmail
 
   return (
     <section
@@ -84,7 +89,7 @@ export function ConfirmationPreview({
       </div>
 
       <div className={styles.actions}>
-        <Button type="button" variant="ghost" size="md" onClick={onBack}>
+        <Button type="button" variant="ghost" size="md" onClick={onBack} disabled={isSendingEmail}>
           {confirmation.backToPaymentLabel}
         </Button>
         <Button
@@ -93,12 +98,18 @@ export function ConfirmationPreview({
           size="md"
           className={styles.confirmBtn}
           onClick={onConfirm}
-          disabled={!values.paymentDeclared}
-          aria-disabled={!values.paymentDeclared || undefined}
+          disabled={isConfirmDisabled}
+          aria-disabled={isConfirmDisabled || undefined}
         >
-          {confirmation.confirmLabel}
+          {isSendingEmail ? confirmation.confirmSendingLabel : confirmation.confirmLabel}
         </Button>
       </div>
+
+      {emailSendError ? (
+        <p className={styles.sendError} role="alert">
+          {emailSendError}
+        </p>
+      ) : null}
     </section>
   )
 }

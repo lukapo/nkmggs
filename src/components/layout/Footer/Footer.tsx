@@ -33,8 +33,21 @@ export function Footer() {
           <div className={styles.contactBlock}>
             <h2 className={styles.navTitle}>Kontakt</h2>
             <p>
-              <a href={`mailto:${site.contact.email}`} className={styles.contactLink}>
+              <a
+                href={`mailto:${site.contact.email}`}
+                className={styles.contactLink}
+                aria-label={`Službeni e-mail kluba: ${site.contact.email}`}
+              >
                 {site.contact.email}
+              </a>
+            </p>
+            <p>
+              <a
+                href={site.contact.phone.href}
+                className={styles.contactLink}
+                aria-label={`Telefon predsjednika kluba ${site.contact.president.name}: ${site.contact.phone.display}`}
+              >
+                {site.contact.phone.display}
               </a>
             </p>
             <p className={styles.location}>{site.club.location}</p>

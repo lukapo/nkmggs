@@ -1,0 +1,39 @@
+.actions {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.actionBtn {
+  justify-content: center;
+  gap: var(--space-2);
+
+  &:disabled {
+    opacity: 0.75;
+  }
+}
+
+.shareStatus,
+.shareError {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.shareStatus {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.shareError {
+  background: rgba(215, 45, 25, 0.06);
+  border: 1px solid rgba(215, 45, 25, 0.2);
+  color: var(--color-brand-red);
+}

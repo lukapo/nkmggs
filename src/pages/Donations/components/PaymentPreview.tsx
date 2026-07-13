@@ -1,4 +1,6 @@
 import { site } from '../../../data/site'
+import { buildDonationPaymentDetails } from '../utils/buildDonationPaymentDetails'
+import { Hub3Barcode } from './Hub3Barcode'
 import type { SubmittedDonation } from '../utils/validateDonationForm'
 import styles from './PaymentPreview.module.scss'
 
@@ -9,17 +11,8 @@ interface PaymentPreviewProps {
   className?: string
 }
 
-function formatAmount(amount: number): string {
-  return `${new Intl.NumberFormat('hr-HR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(amount)} EUR`
-}
-
 export function PaymentPreview({ donation, className }: PaymentPreviewProps) {
-  const { details } = payment
-  const donorName = `${donation.firstName} ${donation.lastName}`
-  const paymentDescription = `Donacija - ${donorName}`
+  const paymentDetails = buildDonationPaymentDetails(donation)
 
   return (
     <section
@@ -30,51 +23,48 @@ export function PaymentPreview({ donation, className }: PaymentPreviewProps) {
         {payment.title}
       </h2>
 
-      <div className={styles.qrPlaceholder} aria-hidden="true">
-        <div className={styles.qrPattern} />
-        <span className={styles.qrLabel}>{payment.qrPlaceholder}</span>
-      </div>
+      <Hub3Barcode donation={donation} />
 
       <dl className={styles.details}>
         <div className={styles.detailRow}>
           <dt>Donator</dt>
-          <dd>{donorName}</dd>
+          <dd>{paymentDetails.donorName}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Primatelj</dt>
-          <dd>{details.recipient}</dd>
+          <dd>{paymentDetails.recipient}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>IBAN</dt>
-          <dd>{details.iban}</dd>
+          <dd>{paymentDetails.iban}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>BIC/SWIFT</dt>
-          <dd>{details.bic}</dd>
+          <dd>{paymentDetails.bic}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Banka</dt>
-          <dd>{details.bank}</dd>
+          <dd>{paymentDetails.bank}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Valuta</dt>
-          <dd>{details.currency}</dd>
+          <dd>{paymentDetails.currency}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Opis plaćanja</dt>
-          <dd>{paymentDescription}</dd>
+          <dd>{paymentDetails.description}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Model</dt>
-          <dd>{details.model}</dd>
+          <dd>{paymentDetails.model}</dd>
         </div>
         <div className={styles.detailRow}>
           <dt>Poziv na broj</dt>
-          <dd>{details.reference}</dd>
+          <dd>{paymentDetails.paymentReference}</dd>
         </div>
         <div className={`${styles.detailRow} ${styles.amountRow}`}>
           <dt>Iznos</dt>
-          <dd>{formatAmount(donation.amount)}</dd>
+          <dd>{paymentDetails.amountFormatted}</dd>
         </div>
       </dl>
 

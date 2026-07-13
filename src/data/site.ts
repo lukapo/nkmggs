@@ -25,11 +25,74 @@ export const site = {
 
   contact: {
     email: 'nkmatijagubec1970@gmail.com',
+    clubDisplayName: 'NK Matija Gubec Gornja Stubica',
+    phone: {
+      display: '+385 98 956 2182',
+      href: 'tel:+385989562182',
+    },
+    president: {
+      role: 'Predsjednik kluba',
+      name: 'Dalibor Sviben',
+    },
   },
 
   social: {
     facebook: null,
     instagram: null,
+  },
+
+  seo: {
+    canonicalBase: 'https://nkmggs.hr',
+    themeColor: '#d72d19',
+    global: {
+      title: 'NK Matija Gubec Gornja Stubica',
+      description:
+        'Službena web-stranica Nogometnog kluba Matija Gubec Gornja Stubica. Informacije o klubu, kategorijama, donacijama i kontaktu.',
+    },
+    pages: {
+      home: {
+        title: 'NK Matija Gubec Gornja Stubica',
+        description: 'Službena web-stranica NK Matija Gubec Gornja Stubica.',
+        path: '/',
+      },
+      about: {
+        title: 'O nama | NK Matija Gubec',
+        description: 'Saznajte više o NK Matija Gubec Gornja Stubica.',
+        path: '/o-nama',
+      },
+      categories: {
+        title: 'Kategorije | NK Matija Gubec',
+        description: 'Pregled svih uzrasnih kategorija NK Matija Gubec.',
+        path: '/kategorije',
+      },
+      donations: {
+        title: 'Donacije | NK Matija Gubec',
+        description: 'Podržite rad NK Matija Gubec donacijom i preuzmite personaliziranu zahvalnicu.',
+        path: '/donacije',
+      },
+      contact: {
+        title: 'Kontakt | NK Matija Gubec',
+        description: 'Kontakt podaci NK Matija Gubec Gornja Stubica.',
+        path: '/kontakt',
+      },
+      notFound: {
+        title: 'Stranica nije pronađena | NK Matija Gubec',
+        description: 'Tražena stranica nije pronađena.',
+      },
+    },
+  },
+
+  manifest: {
+    name: 'NK Matija Gubec Gornja Stubica',
+    short_name: 'NK Matija Gubec',
+    description: 'Službena web-stranica NK Matija Gubec Gornja Stubica.',
+    start_url: '/nkmggs/',
+    scope: '/nkmggs/',
+    display: 'standalone',
+    background_color: '#F7F7F4',
+    theme_color: '#D72D19',
+    crestPath: `${import.meta.env.BASE_URL}images/logo-nk-matija-gubec.png`,
+    webManifestPath: `${import.meta.env.BASE_URL}site.webmanifest`,
   },
 
   home: {
@@ -175,7 +238,13 @@ export const site = {
 
     contact: {
       title: 'Kontakt',
-      intro: 'Kontakt forma i detalji bit će dostupni u sljedećoj fazi projekta.',
+      pageHeader: {
+        eyebrow: 'NK Matija Gubec · Gornja Stubica',
+      },
+      intro:
+        'Za informacije o klubu, treninzima, članstvu, suradnji ili drugim upitima obratite nam se putem službenog e-maila ili telefona.',
+      emailLabel: 'Službeni e-mail',
+      phoneLabel: 'Telefon',
     },
 
     donations: {
@@ -195,10 +264,10 @@ export const site = {
       form: {
         firstNameLabel: 'Ime',
         lastNameLabel: 'Prezime',
-        jerseyNumberLabel: 'Odaberite broj na dresu',
+        jerseyNumberLabel: 'Odaberite broj za zahvalnicu',
         amountLabel: 'Iznos donacije (EUR)',
         jerseyHint:
-          'Ako ne odaberete broj, aplikacija će automatski odabrati nasumičan broj od 0 do 99.',
+          'Broj će biti prikazan na personaliziranoj zahvalnici. Ako ga ne odaberete, aplikacija će automatski dodijeliti nasumičan broj od 0 do 99.',
         randomButtonLabel: 'Nasumičan broj',
         submitLabel: 'Generiraj kod za plaćanje',
         errors: {
@@ -214,7 +283,9 @@ export const site = {
 
       payment: {
         title: 'Kod za plaćanje',
-        qrPlaceholder: 'PDF417 kod — uskoro',
+        barcodeCaption: 'Skenirajte kod mobilnom bankovnom aplikacijom.',
+        barcodeError:
+          'Kod za plaćanje trenutačno nije moguće generirati. Upotrijebite podatke za ručni unos.',
         explanation:
           'Kod možete skenirati svojom mobilnom bankovnom aplikacijom ili ručno unijeti podatke za plaćanje.',
         backLabel: 'Natrag na podatke',
@@ -270,6 +341,9 @@ export const site = {
           'Dopuštam NK Matija Gubec da moju personaliziranu zahvalnicu objavi na svojim društvenim mrežama.',
         backToPaymentLabel: 'Natrag na plaćanje',
         confirmLabel: 'Potvrdi donaciju',
+        confirmSendingLabel: 'Šaljem obavijest…',
+        emailSendError:
+          'Obavijest klubu trenutačno nije moguće poslati. Provjerite internetsku vezu i pokušajte ponovno.',
         errors: {
           paymentDeclaredRequired:
             'Za nastavak morate potvrditi da ste izvršili donaciju.',
@@ -278,6 +352,15 @@ export const site = {
 
       thankYou: {
         title: 'Hvala na donaciji!',
+        canvasMessageLines: ['NK Matija Gubec', 'Vam zahvaljuje na donaciji!'] as const,
+        generatingLabel: 'Generiranje zahvalnice...',
+        generateError: 'Zahvalnicu trenutačno nije moguće generirati. Pokušajte ponovno.',
+        gratitudeMessage:
+          'Zahvaljujemo na vašoj podršci. Vaša donacija pomaže svakodnevnom radu kluba i razvoju mladih igrača.',
+        recordedMessage:
+          'Vaša prijava donacije je zabilježena, a obavijest je uspješno poslana klubu.',
+        paymentDisclaimer:
+          'Web-stranica ne može potvrditi je li bankovna transakcija stvarno izvršena.',
         placeholderExplanation:
           'Personalizirana zahvalnica bit će prikazana u sljedećoj fazi implementacije.',
         explanation:
@@ -293,14 +376,46 @@ export const site = {
         title: 'Nakon završetka',
         downloadLabel: 'Preuzmi zahvalnicu',
         shareLabel: 'Podijeli zahvalnicu',
+        sharePreparingLabel: 'Priprema dijeljenja…',
+        shareTitle: 'Zahvalnica NK Matija Gubec',
+        shareText: 'NK Matija Gubec Vam zahvaljuje na donaciji!',
+        shareUnsupported:
+          'Vaš preglednik ne podržava izravno dijeljenje slike. Preuzmite zahvalnicu i ručno je podijelite na društvenim mrežama.',
+        shareError:
+          'Zahvalnicu trenutačno nije moguće podijeliti. Preuzmite je i podijelite ručno.',
         finishLabel: 'Završi proces',
         soonLabel: 'Uskoro',
         notes: [
           'Zahvalnicu ćete uvijek moći preuzeti na svoj uređaj.',
-          'Dijeljenje će biti omogućeno kada vaš uređaj i preglednik to podržavaju.',
+          'Na podržanim uređajima možete zahvalnicu izravno podijeliti putem aplikacija na uređaju.',
           'Završetak procesa resetirat će formu i vratiti stranicu na početno stanje.',
         ],
       },
+    },
+
+    clubThankYou: {
+      title: 'Generator zahvalnice za klub',
+      intro:
+        'Unesite podatke iz EmailJS obavijesti kako biste ponovno generirali personaliziranu zahvalnicu za objavu.',
+      fullNameLabel: 'Ime i prezime',
+      jerseyNumberLabel: 'Broj dresa',
+      generateLabel: 'Generiraj zahvalnicu',
+      resetLabel: 'Generiraj novu',
+      previewTitle: 'Generirana zahvalnica',
+      errors: {
+        fullNameRequired: 'Ime i prezime je obavezno.',
+        fullNameMinLength: 'Ime i prezime mora imati najmanje 2 znaka.',
+        jerseyNumberRequired: 'Broj dresa je obavezan.',
+        jerseyNumberInvalid: 'Broj dresa mora biti cijeli broj od 0 do 99.',
+      },
+    },
+
+    notFound: {
+      code: '404',
+      subtitle: 'Tražena stranica nije pronađena.',
+      description: 'Stranica koju pokušavate otvoriti ne postoji ili je premještena.',
+      homeCta: { label: 'Povratak na početnu', path: '/' },
+      donationsCta: { label: 'Donacije', path: '/donacije' },
     },
   },
 } as const

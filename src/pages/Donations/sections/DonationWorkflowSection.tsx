@@ -1,5 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Container } from '../../../components/ui/Container/Container'
+import { site } from '../../../data/site'
+import { sendDonationEmail } from '../../../services/sendDonationEmail'
 import { DonationStepper } from '../components/DonationStepper'
 import { DonationFormPreview } from '../components/DonationFormPreview'
 import { DonationPaymentStep } from '../components/DonationPaymentStep'
@@ -39,6 +41,7 @@ const INITIAL_FORM_VALUES: DonationFormValues = {
 
 const FORM_TITLE_ID = 'donation-form-title'
 const FORM_FIRST_FIELD_ID = 'donation-first-name'
+const { emailSendError: EMAIL_SEND_ERROR_MESSAGE } = site.pages.donations.confirmation
 
 function focusElementById(elementId: string) {
   requestAnimationFrame(() => {
@@ -57,6 +60,13 @@ export function DonationWorkflowSection() {
   )
   const [confirmationErrors, setConfirmationErrors] = useState<DonationConfirmationErrors>({})
   const [showConfirmationErrors, setShowConfirmationErrors] = useState(false)
+  const [isSendingEmail, setIsSendingEmail] = useState(false)
+  const [emailSendError, setEmailSendError] = useState<string | null>(null)
+  const currentStepRef = useRef(currentStep)
+
+  useEffect(() => {
+    currentStepRef.current = currentStep
+  }, [currentStep])
 
   const updateField = (field: DonationFormField, value: string) => {
     setFormValues((current) => ({ ...current, [field]: value }))
@@ -122,6 +132,7 @@ export function DonationWorkflowSection() {
   }
 
   const handleBackToPayment = () => {
+    setEmailSendError(null)
     setCurrentStep(2)
     focusPaymentStep()
   }
@@ -146,7 +157,11 @@ export function DonationWorkflowSection() {
     setConfirmationValues((current) => ({ ...current, publicationConsent: checked }))
   }
 
-  const handleConfirmDonation = () => {
+  const handleConfirmDonation = async () => {
+    if (isSendingEmail) {
+      return
+    }
+
     const validationErrors = validateDonationConfirmation(confirmationValues)
     setConfirmationErrors(validationErrors)
     setShowConfirmationErrors(true)
@@ -156,8 +171,45 @@ export function DonationWorkflowSection() {
       return
     }
 
+    if (!submittedDonation) {
+      return
+    }
+
+    setIsSendingEmail(true)
+    setEmailSendError(null)
+
+    const result = await sendDonationEmail({
+      donation: submittedDonation,
+      confirmation: confirmationValues,
+    })
+
+    setIsSendingEmail(false)
+
+    if (currentStepRef.current !== 3) {
+      return
+    }
+
+    if (result.status !== 'success') {
+      setEmailSendError(EMAIL_SEND_ERROR_MESSAGE)
+      return
+    }
+
     setCurrentStep(4)
     focusCompleteStep()
+  }
+
+  const handleFinishProcess = () => {
+    setCurrentStep(1)
+    setFormValues(INITIAL_FORM_VALUES)
+    setErrors({})
+    setShowErrors(false)
+    setSubmittedDonation(null)
+    setConfirmationValues(INITIAL_CONFIRMATION_VALUES)
+    setConfirmationErrors({})
+    setShowConfirmationErrors(false)
+    setIsSendingEmail(false)
+    setEmailSendError(null)
+    focusFormEntry()
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -223,6 +275,8 @@ export function DonationWorkflowSection() {
                 values={confirmationValues}
                 errors={confirmationErrors}
                 showErrors={showConfirmationErrors}
+                isSendingEmail={isSendingEmail}
+                emailSendError={emailSendError}
                 onPaymentDeclaredChange={handlePaymentDeclaredChange}
                 onPublicationConsentChange={handlePublicationConsentChange}
                 onBack={handleBackToPayment}
@@ -231,9 +285,9 @@ export function DonationWorkflowSection() {
             </div>
           ) : null}
 
-          {currentStep === 4 ? (
+          {currentStep === 4 && submittedDonation ? (
             <div className={styles.main}>
-              <DonationCompleteStep />
+              <DonationCompleteStep donation={submittedDonation} onFinish={handleFinishProcess} />
             </div>
           ) : null}
         </div>

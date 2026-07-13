@@ -1,4 +1,5 @@
 import { site } from '../../../data/site'
+import { generatePaymentReference } from './generatePaymentReference'
 
 const { errors: messages } = site.pages.donations.form
 
@@ -16,8 +17,9 @@ export type DonationFormErrors = Partial<Record<DonationFormField, string>>
 export interface SubmittedDonation {
   firstName: string
   lastName: string
-  jerseyNumber: number | null
+  jerseyNumber: number
   amount: number
+  paymentReference: string
 }
 
 export const DONATION_FIELD_IDS: Record<DonationFormField, string> = {
@@ -76,13 +78,18 @@ export function hasDonationFormErrors(errors: DonationFormErrors): boolean {
   return Object.keys(errors).length > 0
 }
 
+function generateRandomJerseyNumber(): number {
+  return Math.floor(Math.random() * 100)
+}
+
 export function buildSubmittedDonation(values: DonationFormValues): SubmittedDonation {
   const jerseyRaw = values.jerseyNumber.trim()
 
   return {
     firstName: values.firstName.trim(),
     lastName: values.lastName.trim(),
-    jerseyNumber: jerseyRaw === '' ? null : Number(jerseyRaw),
+    jerseyNumber: jerseyRaw === '' ? generateRandomJerseyNumber() : Number(jerseyRaw),
     amount: Number(values.amount.trim()),
+    paymentReference: generatePaymentReference(),
   }
 }

@@ -1,8 +1,14 @@
-import { site } from '../../data/site'
-import { PlaceholderPage } from '../../components/ui/PlaceholderPage/PlaceholderPage'
-
-const { contact } = site.pages
+import { getPageSeo } from '../../config/seo'
+import { SEO } from '../../components/seo/SEO'
+import { ContactHeaderSection } from './sections/ContactHeaderSection'
+import { ContactDetailsSection } from './sections/ContactDetailsSection'
 
 export function ContactPage() {
-  return <PlaceholderPage title={contact.title} intro={contact.intro} />
+  return (
+    <>
+      <SEO {...getPageSeo('contact')} />
+      <ContactHeaderSection />
+      <ContactDetailsSection />
+    </>
+  )
 }

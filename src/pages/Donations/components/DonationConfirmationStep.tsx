@@ -6,6 +6,8 @@ interface DonationConfirmationStepProps {
   values: DonationConfirmationValues
   errors: DonationConfirmationErrors
   showErrors: boolean
+  isSendingEmail: boolean
+  emailSendError: string | null
   onPaymentDeclaredChange: (checked: boolean) => void
   onPublicationConsentChange: (checked: boolean) => void
   onBack: () => void
@@ -16,6 +18,8 @@ export function DonationConfirmationStep({
   values,
   errors,
   showErrors,
+  isSendingEmail,
+  emailSendError,
   onPaymentDeclaredChange,
   onPublicationConsentChange,
   onBack,
@@ -27,6 +31,8 @@ export function DonationConfirmationStep({
         values={values}
         errors={errors}
         showErrors={showErrors}
+        isSendingEmail={isSendingEmail}
+        emailSendError={emailSendError}
         onPaymentDeclaredChange={onPaymentDeclaredChange}
         onPublicationConsentChange={onPublicationConsentChange}
         onBack={onBack}

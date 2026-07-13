@@ -6,6 +6,15 @@
   text-align: center;
   margin-inline: auto;
   max-width: 42rem;
+
+  h2:focus {
+    outline: none;
+  }
+
+  h2:focus-visible {
+    box-shadow: var(--focus-ring);
+    border-radius: var(--radius-sm);
+  }
 }
 
 .eyebrow {
