@@ -46,7 +46,7 @@ export function DonationFormPreview({
 
   return (
     <section className={styles.card} aria-labelledby="donation-form-title">
-      <h2 id="donation-form-title" className={styles.title}>
+      <h2 id="donation-form-title" className={styles.title} tabIndex={-1}>
         Vaši podaci
       </h2>
 

@@ -16,7 +16,9 @@
   display: grid;
   gap: var(--space-8);
   min-width: 0;
+}
 
+.workflowSplit {
   @include respond-to('lg') {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: var(--space-10);
@@ -24,10 +26,20 @@
   }
 }
 
-.left,
-.right {
+.workflowSingle {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.main,
+.aside {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
   min-width: 0;
+}
+
+.workflowSingle .main {
+  width: 100%;
+  max-width: min(50rem, 100%);
+  margin-inline: auto;
 }

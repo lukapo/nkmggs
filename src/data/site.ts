@@ -217,6 +217,8 @@ export const site = {
         qrPlaceholder: 'PDF417 kod — uskoro',
         explanation:
           'Kod možete skenirati svojom mobilnom bankovnom aplikacijom ili ručno unijeti podatke za plaćanje.',
+        backLabel: 'Natrag na podatke',
+        continueLabel: 'Nastavi na potvrdu',
         details: {
           recipient: 'NK Matija Gubec Gornja Stubica',
           iban: 'HR4423600001102535916',
@@ -266,12 +268,18 @@ export const site = {
           'Izjavljujem da sam prema vlastitoj savjesti izvršio donaciju NK Matija Gubec na prikazani račun. Razumijem da web-stranica ne provjerava niti može potvrditi stvarno izvršenje bankovne transakcije.',
         socialConsent:
           'Dopuštam NK Matija Gubec da moju personaliziranu zahvalnicu objavi na svojim društvenim mrežama.',
-        cancelLabel: 'Odustani',
+        backToPaymentLabel: 'Natrag na plaćanje',
         confirmLabel: 'Potvrdi donaciju',
+        errors: {
+          paymentDeclaredRequired:
+            'Za nastavak morate potvrditi da ste izvršili donaciju.',
+        },
       },
 
       thankYou: {
-        title: 'Hvala na donaciji',
+        title: 'Hvala na donaciji!',
+        placeholderExplanation:
+          'Personalizirana zahvalnica bit će prikazana u sljedećoj fazi implementacije.',
         explanation:
           'Vaša personalizirana zahvalnica spremna je za preuzimanje i dijeljenje.',
         exampleLabel: 'Primjer izgleda — UI faza',

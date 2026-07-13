@@ -6,6 +6,7 @@ const { payment } = site.pages.donations
 
 interface PaymentPreviewProps {
   donation: SubmittedDonation
+  className?: string
 }
 
 function formatAmount(amount: number): string {
@@ -15,14 +16,17 @@ function formatAmount(amount: number): string {
   }).format(amount)} EUR`
 }
 
-export function PaymentPreview({ donation }: PaymentPreviewProps) {
+export function PaymentPreview({ donation, className }: PaymentPreviewProps) {
   const { details } = payment
   const donorName = `${donation.firstName} ${donation.lastName}`
   const paymentDescription = `Donacija - ${donorName}`
 
   return (
-    <section className={styles.card} aria-labelledby="payment-preview-title">
-      <h2 id="payment-preview-title" className={styles.title}>
+    <section
+      className={[styles.card, className].filter(Boolean).join(' ')}
+      aria-labelledby="payment-preview-title"
+    >
+      <h2 id="payment-preview-title" className={styles.title} tabIndex={-1}>
         {payment.title}
       </h2>
 
